@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Bank Account UI</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #4e54c8, #8f94fb);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      background-color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #4e54c8;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      width: 80%;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="number"]:focus {
+      border-color: #4e54c8;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 10px;
+      background-color: #4e54c8;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #6c70f4;
+    }
+
+    .balance {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏦 My Bank</h1>
+    <div class="balance" id="balance">Balance: ₹500</div>
+    <input type="number" id="amount" placeholder="Enter amount" />
+    <br>
+    <button onclick="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+  </div>
+
+  <script>
+    let balance = 500;
+
+    function updateBalance() {
+      document.getElementById('balance').textContent = `Balance: ₹${balance}`;
+    }
+
+    function deposit() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      if (!isNaN(amount) && amount > 0) {
+        balance += amount;
+        updateBalance();
+      }
+      document.getElementById('amount').value = '';
+    }
+
+    function withdraw() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      if (!isNaN(amount) && amount > 0) {
+        balance -= amount;
+        updateBalance();
+      }
+      document.getElementById('amount').value = '';
+    }
+  </script>
+</body>
+</html>
